@@ -47,4 +47,15 @@ class Movie {
     }
 }
 
+$Avatar_description = "Un film di fantascienza che racconta la storia di un ex-marine che si ritrova su un pianeta alieno e si innamora di una donna nativa.";
+$Avatar = new Movie("Avatar", "James Cameron", 2009, $Avatar_description);
+
+var_dump($Avatar);
+
+echo "----------------------------------<br/>";
+
+$Inception_description = "Un film di fantascienza che segue un ladro che entra nei sogni delle persone per rubare segreti, ma viene incaricato di impiantare un'idea nella mente di qualcuno.";
+$Inception = new Movie("Inception", "Christopher Nolan", 2010, $Inception_description);
+
+var_dump($Inception);
 ?>
