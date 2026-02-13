@@ -1,11 +1,27 @@
 <?php
 
 class Genre {
-    public $name;
-    public $iLikeIt;
+    private $name;
+    private $iLikeIt;
     
     public function __construct($_name, $_iLikeIt) {
         $this->name = $_name;
+        $this->iLikeIt = $_iLikeIt;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function setName($_name) {
+        $this->name = $_name;
+    }
+
+    public function getILikeIt() {
+        return $this->iLikeIt;
+    }
+
+    public function setILikeIt($_iLikeIt) {
         $this->iLikeIt = $_iLikeIt;
     }
 }
@@ -15,14 +31,14 @@ class Movie {
     private $title;
     private $director;
     private $year;
-    private $genre;
+    private $genres = [];
     private $description;
 
     public function __construct($_title, $_director, $_year, Genre $_genre, $_description) {
         $this->title = $_title;
         $this->director = $_director;
         $this->year = $_year;
-        $this->genre = $_genre;
+        $this->genres[] = $_genre;
         $this->description = $_description;
     }
 
@@ -50,6 +66,20 @@ class Movie {
         $this->year = $_year;
     }
 
+    public function getGenre() {
+        return $this->genre;
+    }
+
+    public function setGenre(Genre $_genre) {
+        $this->genre = [$_genre]; // Sostituisce l'intero array con un nuovo array contenente solo il nuovo genere
+    }
+
+     public function addGenre(Genre $_genre) {
+        if (!in_array($_genre, $this->genres)) {
+            $this->genres[] = $_genre; // Aggiunge un elemento all'array
+        }
+    }
+
     public function getDescription() {
         return $this->description;
     }
@@ -72,6 +102,8 @@ $Inception_description = "Un film di fantascienza che segue un ladro che entra n
 $Inception_genre = new Genre("Fantascienza", true);
 
 $Inception = new Movie("Inception", "Christopher Nolan", 2010, $Inception_genre, $Inception_description);
+
+$Inception->addGenre(new Genre("Thriller", false));
 
 var_dump($Inception);
 ?>
