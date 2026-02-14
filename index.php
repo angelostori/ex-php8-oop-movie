@@ -1,5 +1,21 @@
 <?php
 
+trait Rateable {
+    private $rating;
+
+    public function getRating($_rating) {
+        return $this->rating = $_rating;
+    }
+
+    public function setRating($_rating) {
+        if ($_rating >= 1 && $_rating <= 5) {
+            $this->rating = $_rating;
+        } else {
+            echo "Errore: Il rating deve essere compreso tra 1 e 5.";
+        }
+    }
+}
+
 class Genre {
     private $name;
     private $iLikeIt;
@@ -34,6 +50,8 @@ class Movie {
     private $genres = [];
     private $description;
 
+    use Rateable;
+
     public function __construct($_title, $_director, $_year, Genre $_genre, $_description) {
         $this->title = $_title;
         $this->director = $_director;
@@ -67,7 +85,7 @@ class Movie {
     }
 
     public function getGenre() {
-        return $this->genre;
+        return $this->genres;
     }
 
     public function setGenre(Genre $_genre) {
@@ -93,6 +111,7 @@ $Avatar_description = "Un film di fantascienza che racconta la storia di un ex-m
 $Avatar_genre = new Genre("Fantascienza", true);
 
 $Avatar = new Movie("Avatar", "James Cameron", 2009, $Avatar_genre, $Avatar_description);
+$Avatar->setRating(5);
 
 var_dump($Avatar);
 
@@ -104,6 +123,7 @@ $Inception_genre = new Genre("Fantascienza", true);
 $Inception = new Movie("Inception", "Christopher Nolan", 2010, $Inception_genre, $Inception_description);
 
 $Inception->addGenre(new Genre("Thriller", false));
+$Inception->setRating(4);
 
 var_dump($Inception);
 ?>
