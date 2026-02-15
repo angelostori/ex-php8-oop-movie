@@ -12,9 +12,9 @@ $Avatar_genre = new Genre("Fantascienza", true);
 $Avatar = new Movie("Avatar", "James Cameron", 2009, $Avatar_genre, $Avatar_description);
 $Avatar->setRating(5);
 
-var_dump($Avatar);
+// var_dump($Avatar);
 
-echo "----------------------------------<br/>";
+// echo "----------------------------------<br/>";
 
 $Inception_description = "Un film di fantascienza che segue un ladro che entra nei sogni delle persone per rubare segreti, ma viene incaricato di impiantare un'idea nella mente di qualcuno.";
 $Inception_genre = new Genre("Fantascienza", true);
@@ -24,5 +24,7 @@ $Inception = new Movie("Inception", "Christopher Nolan", 2010, $Inception_genre,
 $Inception->addGenre(new Genre("Thriller", false));
 $Inception->setRating(4);
 
-var_dump($Inception);
+// var_dump($Inception);
+
+$movies = [$Avatar, $Inception];
 ?>

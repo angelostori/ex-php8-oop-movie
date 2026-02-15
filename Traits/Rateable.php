@@ -3,8 +3,8 @@
 trait Rateable {
     private $rating;
 
-    public function getRating($_rating) {
-        return $this->rating = $_rating;
+    public function getRating() {
+        return $this->rating;
     }
 
     public function setRating($_rating) {
